@@ -22,10 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('checkview', views.checkview, name="checkview"),
-    path('send', views.send, name = "send"),
-    path('getMessages/<str:room>/', views.getMessages, name = "getMessages"),
-    path('<str:room>/', views.room, name= "room"),
     path('signup/', views.signup, name='signup'),
     path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout')
+    path('logout/', views.logout_view, name='logout'),
+     path('send', views.send, name = "send"),
+    path('getMessages/<str:room>/', views.getMessages, name = "getMessages"),
+    path('<str:room>/', views.room, name= "room")
 ]
