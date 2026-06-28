@@ -108,6 +108,15 @@
             text-decoration: none;
 
         }
+        .logout-link {
+            font-size: 14px;
+            margin-left: 10px;
+            color: #fff;
+            background-color: #c0392b;
+            padding: 8px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
         .title {
             margin: 20px 0;
             color: #000;
@@ -152,7 +161,11 @@
 
 
 
-    <h2 class="title"> {{room}} - Groupe <a class="link" href="{% url 'home' %}">Change Group</a></h2>
+    <h2 class="title">
+        {{room}} - Groupe
+        <a class="link" href="{% url 'home' %}">Change Group</a>
+        <a class="logout-link" href="{% url 'logout' %}">Déconnexion</a>
+    </h2>
     <div id="display" >
         <!-- Les messages de chat seront ajoutés ici -->
         <p>Aucun message présent</p>
@@ -160,7 +173,6 @@
     <div class="container">
         <form id="post-form">
             {% csrf_token %}
-            <input type="hidden" name="username" id="username" value="{{username}}"/>
             <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
             <input type="text" name="message" id="message" width="100px" />
             <input type="submit" value="Send">
@@ -176,7 +188,6 @@
           type:'POST',
           url:'/send',
           data:{
-              username:$('#username').val(),
               room_id:$('#room_id').val(),
               message:$('#message').val(),
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
